@@ -16,7 +16,7 @@ app.use("/users", userRoutes);
 
 const CONNECTION_URL =
   "mongodb+srv://axitthummar4:axitthu147@cluster0.qiirm9r.mongodb.net/?retryWrites=true&w=majority";
-const PORT = process.env.PORT || 5000;
+const PORT = https://moments-iota.vercel.app;
 
 mongoose
   .connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
