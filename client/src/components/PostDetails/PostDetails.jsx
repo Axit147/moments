@@ -21,7 +21,7 @@ const PostDetails = () => {
     }, [id]);
 
 
-    if (!post) {
+    if (post) {
         return (
             <>
                 <div className="max-w-6xl mx-auto">
