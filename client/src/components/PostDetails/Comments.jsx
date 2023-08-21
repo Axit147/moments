@@ -46,7 +46,7 @@ const Comments = ({ post }) => {
                         <h2>Write a comment</h2>
                         <form action="">
                             <textarea value={comment} onChange={(e) => setComment(e.target.value)} placeholder='Comment' className='border outline-0 w-full p-2' />
-                            <button onClick={clickHandler} className={`w-full px-3 py-2 text-white rounded-md hover:rounded-3xl hover:opacity-80 duration-300 ${!comment ? 'bg-gray-200 pointer-events-none' : 'bg-sky-600'}`}>{isPushing ? <Loader /> : 'Comment'}</button>
+                            <button onClick={clickHandler} className={`w-full px-3 py-2 text-white rounded-md hover:rounded-3xl hover:opacity-80 duration-300 ${!comment || isPushing ? 'bg-gray-200 pointer-events-none' : 'bg-sky-600'}`}>{isPushing ? 'Adding Comment...' : 'Comment'}</button>
                         </form>
                     </div>
                 )}
