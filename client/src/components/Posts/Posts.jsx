@@ -1,6 +1,7 @@
 import React from "react";
 import Post from "./Post";
 import { useSelector } from "react-redux";
+import Loader from "../loader";
 
 function Posts({ currentId, setCurrentId }) {
     const posts = useSelector((state) => state.posts);
@@ -9,6 +10,7 @@ function Posts({ currentId, setCurrentId }) {
         <div className="w-full max-w-[1200px] my-10">
             {!posts.length ? (
                 <>
+                    <section className="mx-auto w-fit mb-5"><Loader /></section>
                     <h1 className="text-center">No Memories found...</h1>
                 </>
             ) : (

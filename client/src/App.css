@@ -14,3 +14,21 @@
 .expandable {
   animation: open 0.7s;
 }
+
+@keyframes load {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 7px solid rgba(128, 128, 128, 0.6);
+  border-top-color: dodgerblue;
+  animation: load 1s ease infinite;
+}

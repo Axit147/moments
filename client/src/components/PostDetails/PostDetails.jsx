@@ -6,6 +6,7 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 import { LikeFill } from "../../images/Icons";
 import Comments from "./Comments";
+import Loader from "../loader";
 
 const PostDetails = () => {
     const dispatch = useDispatch();
@@ -69,7 +70,11 @@ const PostDetails = () => {
                 </div>
             </>
         );
-    } else <div>loading</div>;
+    } else (
+        <div className="w-full h-full flex items-center justify-center">
+            <Loader />
+        </div>
+    );
 };
 
 export default PostDetails;
