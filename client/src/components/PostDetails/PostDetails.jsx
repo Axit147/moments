@@ -70,11 +70,14 @@ const PostDetails = () => {
                 </div>
             </>
         );
-    } else (
-        <div className="w-full h-full flex items-center justify-center">
-            <Loader />
-        </div>
-    );
+    } else {
+        return (
+
+            <div className="w-full h-full flex items-center justify-center">
+                <Loader />
+            </div>
+        )
+    }
 };
 
 export default PostDetails;
