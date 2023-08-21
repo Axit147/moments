@@ -1,21 +1,25 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { commentPost } from '../../actions/posts'
+import Loader from '../loader';
 
 const Comments = ({ post }) => {
 
     // const [comments, setComments] = useState(post.comments);
     const [comment, setComment] = useState('');
+    const [isPushing, setIsPushing] = useState(false);
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('profile'));
     const commentRef = useRef()
 
     const clickHandler = async (e) => {
         e.preventDefault()
+        setIsPushing(true)
         const finalComment = `${user?.result?.name}: ${comment}`;
         await dispatch(commentPost(finalComment, post._id));
         post.comments.push(finalComment)
         setComment('');
+        setIsPushing(false)
         commentRef.current.scrollIntoView({ behavior: 'smooth' });
     }
 
@@ -42,7 +46,7 @@ const Comments = ({ post }) => {
                         <h2>Write a comment</h2>
                         <form action="">
                             <textarea value={comment} onChange={(e) => setComment(e.target.value)} placeholder='Comment' className='border outline-0 w-full p-2' />
-                            <button onClick={clickHandler} className={`w-full px-3 py-2 text-white rounded-md hover:rounded-3xl hover:opacity-80 duration-300 ${!comment ? 'bg-gray-200 pointer-events-none' : 'bg-sky-600'}`}>Comment</button>
+                            <button onClick={clickHandler} className={`w-full px-3 py-2 text-white rounded-md hover:rounded-3xl hover:opacity-80 duration-300 ${!comment ? 'bg-gray-200 pointer-events-none' : 'bg-sky-600'}`}>{isPushing ? <Loader /> : 'Comment'}</button>
                         </form>
                     </div>
                 )}
