@@ -3,7 +3,7 @@ import * as api from "../api";
 export const getPosts = (page) => async (dispatch) => {
   try {
     const { data } = await api.fetchPosts(page);
-    dispatch({ type: "FETCH_ALL", payload: data });
+    dispatch({ type: "FETCH_ALL", payload: { data, page } });
   } catch (error) {
     console.log(error);
   }

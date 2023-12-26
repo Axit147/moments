@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Post from "./Post";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../loader";
 import { getPosts } from "../../actions/posts";
 import { PlusPage } from "../../images/Icons";
 
-function Posts({ currentId, setCurrentId, user }) {
+function Posts({ currentId, setCurrentId }) {
   const posts = useSelector((state) => state.posts);
 
   const [page, setPage] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  useMemo(() => {
     setIsLoading(true);
     dispatch(getPosts(page));
     setIsLoading(false);
-  }, [dispatch, page, user]);
+  }, [dispatch, page]);
 
   return (
     <div className="w-full max-w-[1200px] mb-40">

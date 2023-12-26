@@ -1,7 +1,8 @@
 export default (posts = [], action) => {
   switch (action.type) {
     case "FETCH_ALL":
-      return [...posts, ...action.payload];
+      if (action.payload.page === 0) return action.payload.data;
+      return [...posts, ...action.payload.data];
 
     case "FETCH_POST":
       return action.payload;
