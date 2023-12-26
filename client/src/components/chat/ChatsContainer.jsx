@@ -7,8 +7,8 @@ import { io } from "socket.io-client";
 import Notification from "./Notification";
 
 const ChatsContainer = ({ user }) => {
-  // const socket = io.connect("http://localhost:5000");
-  const socket = io.connect("https://moments-bcag.vercel.app");
+  const socket = io.connect("http://localhost:5000");
+  // const socket = io.connect("https://moments-bcag.vercel.app");
   const [isOpen, setIsOpen] = useState(false);
   const [showChat, setShowChat] = useState(false);
   const [recieverId, setRecieverId] = useState("");
