@@ -27,8 +27,8 @@ const Nav = () => {
     }, [location]);
 
     return (
-        <div className="flex justify-center items-center">
-            <div className="flex justify-between items-center border shadow-md py-3 px-6 w-full max-w-3xl my-10 rounded-md grow">
+        <div className="flex justify-center items-center w-full">
+            <div className="flex justify-between items-center border shadow-md py-3 px-6 w-full max-w-3xl mb-10 rounded-md grow">
                 <Link
                     to={"/"}
                     className="text-2xl font-bold flex items-center max-sm:text-lg"

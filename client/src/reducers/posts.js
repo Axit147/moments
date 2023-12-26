@@ -1,13 +1,15 @@
 export default (posts = [], action) => {
   switch (action.type) {
     case "FETCH_ALL":
-      return action.payload;
+      return [...posts, ...action.payload];
 
     case "FETCH_POST":
       return action.payload;
 
-    case "CRAETE":
-      return [...posts, action.payload];
+    case "CREATE":
+      let ps = [action.payload, ...posts];
+      ps.pop();
+      return ps;
 
     case "UPDATE":
     case "LIKE":

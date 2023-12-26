@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 import User from "../models/user.js";
+import Chat from "../models/chat.js";
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
@@ -58,3 +59,14 @@ export const signup = async (req, res) => {
     res.status(500).json({ message: "Something went wrong" });
   }
 };
+
+export const getUsers = async (req, res) => {
+  try {
+    let users = await User.find();
+    res.json(users);
+  } catch (error) {
+    console.log("error", error);
+  }
+};
+
+
