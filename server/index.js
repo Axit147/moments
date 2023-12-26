@@ -17,7 +17,6 @@ const server = http.createServer(app);
 const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
-    //origin: "http://localhost:3000",
     origin: "https://moments-bcag.vercel.app",
     methods: ["GET", "POST"],
   },
@@ -85,7 +84,7 @@ io.on("connection", (socket) => {
 
 const CONNECTION_URL =
   "mongodb+srv://axitthummar4:axitthu147@cluster0.qiirm9r.mongodb.net/?retryWrites=true&w=majority";
-const PORT = "https://moments-iota.vercel.app/" || 5000;
+const PORT = "https://moments-iota.vercel.app" || 5000;
 
 mongoose
   .connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
