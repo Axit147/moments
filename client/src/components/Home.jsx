@@ -9,13 +9,12 @@ import ResizableComponent from "./ResizableBox";
 import { io } from "socket.io-client";
 
 const Home = () => {
-  const socket = io.connect("http://localhost:5000");
-  // const socket = io.connect("https://moments-bcag.vercel.app");
+  // const socket = io.connect("http://localhost:5000");
+  const socket = io.connect("https://moments-bcag.vercel.app");
   const [currentId, setCurrentId] = useState(0);
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"))?.result;
 
-  // const [myStream, setMyStream] = useState(null);
   const myStream = useSelector((state) => state.myStream);
   let connectionRef = useRef();
 
