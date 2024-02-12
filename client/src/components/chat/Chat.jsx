@@ -6,7 +6,7 @@ import { sendNotification } from "../../actions/notifications";
 import moment from "moment";
 import Lottie from "lottie-react";
 import Typing from "../../images/Typing.json";
-import { Back } from "../../images/Icons";
+import { Back, Call } from "../../images/Icons";
 
 const Chat = ({
   senderId,
@@ -20,6 +20,8 @@ const Chat = ({
   setChatId,
   socket,
   user,
+  setMyStream,
+  callUser,
 }) => {
   const dispatch = useDispatch();
 
@@ -59,6 +61,22 @@ const Chat = ({
       return;
     }
   };
+
+  // const sendCall = async () => {
+  //   socket.emit("calluser", {
+  //     recieverId: recieverId,
+  //     callerId: senderId,
+  //     callerName: user.name,
+  //     chatId,
+  //   });
+
+  //   const strem = await navigator.mediaDevices.getUserMedia({
+  //     audio: true,
+  //     video: true,
+  //   });
+  //   console.log(strem);
+  //   setMyStream(strem);
+  // };
 
   // DEBOUNCE
 
@@ -120,7 +138,13 @@ const Chat = ({
         >
           <Back />
         </button>
-        <h1 className="font-semibold text-lg px-3">{chatName}</h1>
+        <h1 className="font-semibold text-lg px-3 grow">{chatName}</h1>
+        <button
+          onClick={() => callUser()}
+          className="p-2 bg-green-500 rounded-full text-white font-semibold"
+        >
+          <Call />
+        </button>
       </nav>
       <div
         ref={chatRef}

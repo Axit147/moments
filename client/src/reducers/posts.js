@@ -8,9 +8,7 @@ export default (posts = [], action) => {
       return action.payload;
 
     case "CREATE":
-      let ps = [action.payload, ...posts];
-      ps.pop();
-      return ps;
+      return [action.payload, ...posts];
 
     case "UPDATE":
     case "LIKE":

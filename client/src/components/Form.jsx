@@ -149,13 +149,13 @@ function Form({ currentId, setCurrentId }) {
                     type="text"
                     name="tags"
                     value={postData.tags}
-                    onChange={(e) =>
+                    onChange={(e) => {
                       setPostData({
                         ...postData,
                         tags: e.target.value.split(","),
-                      })
-                    }
-                    placeholder="tags (Seperate tags with , (coma) )"
+                      });
+                    }}
+                    placeholder="tags (Seperate tags with a , (coma) )"
                   />
                 </div>
 
@@ -210,14 +210,14 @@ function Form({ currentId, setCurrentId }) {
                   className="w-full px-2 py-2 rounded-md bg-lime-600 hover:opacity-80 hover:rounded-3xl duration-200 text-white"
                   onClick={(e) => submitHandler(e)}
                 >
-                  {!currentId ? "Create" : "Edit"}
+                  {!currentId ? "Create" : "Save"}
                 </button>
 
                 <button
                   className="w-full px-2 py-1 rounded-md bg-red-600 hover:bg-red-600/80 hover:rounded-2xl duration-200 text-white"
                   onClick={(e) => clear(e)}
                 >
-                  Clear
+                  {!currentId ? "Clear" : "Cancle"}
                 </button>
               </div>
             </div>

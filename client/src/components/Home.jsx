@@ -1,15 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Form from "./Form";
 import Posts from "./Posts/Posts";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../actions/users";
 import ChatsContainer from "./chat/ChatsContainer";
 import { fetchNotis } from "../actions/notifications";
+import ResizableComponent from "./ResizableBox";
+import { io } from "socket.io-client";
 
 const Home = () => {
+  const socket = io.connect("http://localhost:5000");
+  // const socket = io.connect("https://moments-bcag.vercel.app");
   const [currentId, setCurrentId] = useState(0);
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"))?.result;
+
+  // const [myStream, setMyStream] = useState(null);
+  const myStream = useSelector((state) => state.myStream);
+  let connectionRef = useRef();
 
   useEffect(() => {
     dispatch(getUsers());
@@ -18,9 +26,16 @@ const Home = () => {
 
   return (
     <div className="flex flex-col gap-5 w-full justify-around items-center">
+      {myStream && <ResizableComponent />}
       <Form currentId={currentId} setCurrentId={setCurrentId} />
       <Posts user={user} currentId={currentId} setCurrentId={setCurrentId} />
-      {user && <ChatsContainer user={user} />}
+      {user && (
+        <ChatsContainer
+          user={user}
+          socket={socket}
+          connectionRef={connectionRef}
+        />
+      )}
     </div>
   );
 };

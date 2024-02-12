@@ -10,6 +10,14 @@ import Auth from "./components/Auth";
 import Home from "./components/Home";
 import PostDetails from "./components/PostDetails/PostDetails";
 
+// simple-peer / for 'process is not defined'
+
+import * as process from "process";
+
+window.global = window;
+window.process = process;
+window.Buffer = [];
+
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
 const router = createBrowserRouter([

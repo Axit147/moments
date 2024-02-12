@@ -2,7 +2,6 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 import User from "../models/user.js";
-import Chat from "../models/chat.js";
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
@@ -10,16 +9,20 @@ export const login = async (req, res) => {
   try {
     const existingUser = await User.findOne({ email });
 
-    if (!existingUser)
-      return res.satus(404).json({ message: "User doesn't exist" });
+    if (!existingUser) {
+      return res.status(404).json({ message: "User doesn't exist" });
+    }
 
     const isPasswordCorrect = await bcrypt.compare(
       password,
       existingUser.password
     );
 
-    if (!isPasswordCorrect)
-      return res.status(400).json({ message: "Invalid credentials." });
+    if (!isPasswordCorrect) {
+      return res
+        .status(400)
+        .json({ message: "Invalid E-mail and password combination" });
+    }
 
     const token = jwt.sign(
       { email: existingUser.email, id: existingUser._id },
@@ -39,8 +42,9 @@ export const signup = async (req, res) => {
   try {
     const existingUser = await User.findOne({ email });
 
-    if (existingUser)
-      return res.satus(400).json({ message: "User already exist" });
+    if (existingUser) {
+      return res.status(400).json({ message: "User already exists" });
+    }
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
@@ -68,5 +72,3 @@ export const getUsers = async (req, res) => {
     console.log("error", error);
   }
 };
-
-

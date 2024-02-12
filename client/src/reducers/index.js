@@ -6,6 +6,8 @@ import users from "./users";
 import chats from "./chats";
 import existingChats from "./existingChats";
 import notifications from "./notifications";
+import myStream from "./myStream";
+import userStream from "./userStream";
 
 export default combineReducers({
   posts,
@@ -14,4 +16,6 @@ export default combineReducers({
   chats,
   existingChats,
   notifications,
+  myStream,
+  userStream,
 });

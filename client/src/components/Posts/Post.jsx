@@ -78,11 +78,13 @@ function Post({ post, currentId, setCurrentId }) {
             <div className="p-3">
               <div className="mb-3">
                 {post.tags.length &&
-                  post.tags.map((tag) => (
-                    <p key={tag} className="text-gray-500 px-1 inline">
-                      #{tag}
-                    </p>
-                  ))}
+                  post.tags.map((tag) => {
+                    return (
+                      <p key={tag} className="text-gray-500 px-1 inline">
+                        {tag !== "" && tag !== " " && `#${tag}`}
+                      </p>
+                    );
+                  })}
               </div>
               <p className="px-4 mb-2 font-semibold text-2xl m-0 text-gray-600 h-min">
                 {post.title}

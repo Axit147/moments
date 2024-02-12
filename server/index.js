@@ -17,7 +17,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "https://moments-bcag.vercel.app",
+    origin: "*",
     methods: ["GET", "POST"],
   },
 });
@@ -80,12 +80,40 @@ io.on("connection", (socket) => {
   socket.on("isNotTyping", (roomId) => {
     socket.to(roomId).emit("stopTyping");
   });
+
+  socket.on("callUser", ({ recieverId, callerId, callerName, signal }) => {
+    let reciever = getUser(recieverId);
+    io.to(reciever?.socketId).emit("incomingCall", {
+      callerId,
+      callerName,
+      signal,
+    });
+  });
+
+  socket.on("answerCall", (data) => {
+    const reciever = getUser(data.to);
+    io.to(reciever.socketId).emit("callAccepted", data.signal);
+  });
+
+  socket.on("callDeclined", ({ callerName, callerId, userName }) => {
+    const caller = getUser(callerId);
+
+    io.to(caller?.socketId).emit("callDeclined", userName);
+  });
+
+  socket.on("callEnded", ({ senderId, recieverId, callEnderName }) => {
+    const sender = getUser(senderId);
+    const reciever = getUser(recieverId);
+
+    io.to(sender.socketId).emit("callEnded");
+    io.to(reciever.socketId).emit("callEnded", callEnderName);
+  });
 });
 
 const CONNECTION_URL =
   "mongodb+srv://axitthummar4:axitthu147@cluster0.qiirm9r.mongodb.net/?retryWrites=true&w=majority";
-// const PORT = "https://moments-iota.vercel.app" || 5000;
-const PORT = "https://moments-bcag.vercel.app/";
+const PORT = 5000;
+// const PORT = "https://moments-bcag.vercel.app/";
 
 mongoose
   .connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
