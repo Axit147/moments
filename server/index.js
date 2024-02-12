@@ -112,8 +112,8 @@ io.on("connection", (socket) => {
 
 const CONNECTION_URL =
   "mongodb+srv://axitthummar4:axitthu147@cluster0.qiirm9r.mongodb.net/?retryWrites=true&w=majority";
-const PORT = 5000;
-// const PORT = "https://moments-bcag.vercel.app/";
+// const PORT = 5000;
+const PORT = "https://moments-bcag.vercel.app/";
 
 mongoose
   .connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
