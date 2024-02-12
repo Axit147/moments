@@ -13,6 +13,7 @@ import notificationRouts from "./routes/notifications.js";
 const app = express();
 
 const server = http.createServer(app);
+// app.use(cors());
 
 const io = new Server(server, {
   cors: {
@@ -23,7 +24,6 @@ const io = new Server(server, {
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
-app.use(cors());
 app.use("/posts", postRoutes);
 app.use("/users", userRoutes);
 app.use("/chats", chatsRoutes);
