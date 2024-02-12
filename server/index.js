@@ -18,7 +18,6 @@ const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
     origin: "https://moments-bcag.vercel.app",
-    methods: ["GET", "POST"],
   },
 });
 
