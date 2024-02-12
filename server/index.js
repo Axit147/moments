@@ -16,9 +16,7 @@ const server = http.createServer(app);
 app.use(cors());
 
 const io = new Server(server, {
-  cors: {
-    origin: "*",
-  },
+  origins: ["https://moments-bcag.vercel.app"],
 });
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
