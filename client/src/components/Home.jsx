@@ -10,10 +10,8 @@ import { io } from "socket.io-client";
 
 const Home = () => {
   // const socket = io.connect("http://localhost:5000");
-  const socket = io("https://moments-iota.vercel.app", {
-    transports: ["polling", "websocket"],
-  });
   const [currentId, setCurrentId] = useState(0);
+  const [socket, setSocket] = useState(0);
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"))?.result;
 
@@ -21,6 +19,10 @@ const Home = () => {
   let connectionRef = useRef();
 
   useEffect(() => {
+    const s = io("https://moments-iota.vercel.app", {
+      transports: ["polling", "websocket"],
+    });
+    setSocket(s);
     dispatch(getUsers());
     dispatch(fetchNotis(user?._id));
   }, [dispatch, user]);
