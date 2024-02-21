@@ -9,7 +9,7 @@ import ResizableComponent from "./ResizableBox";
 import { io } from "socket.io-client";
 
 const Home = () => {
-  const socket = io.connect("http://localhost:5000");
+  const socket = io.connect("https://moments-server-q687.onrender.com");
   const [currentId, setCurrentId] = useState(0);
   // const [socket, setSocket] = useState(0);
   const dispatch = useDispatch();
