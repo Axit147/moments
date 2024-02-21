@@ -110,8 +110,8 @@ io.on("connection", (socket) => {
 
 const CONNECTION_URL =
   "mongodb+srv://axitthummar4:axitthu147@cluster0.qiirm9r.mongodb.net/?retryWrites=true&w=majority";
-// const PORT = 5000;
-const PORT = "https://moments-server-q687.onrender.com";
+const PORT = 5000;
+// const PORT = "https://moments-server-q687.onrender.com";
 
 mongoose
   .connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
