@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "https://moments-iota.vercel.app" });
+const API = axios.create({
+  baseURL: "https://moments-server-q687.onrender.com",
+});
 // const API = axios.create({ baseURL: "http://localhost:5000" });
 
 API.interceptors.request.use((req, res) => {
