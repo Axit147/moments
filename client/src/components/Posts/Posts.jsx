@@ -12,9 +12,9 @@ function Posts({ currentId, setCurrentId }) {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
-  useMemo(() => {
+  useMemo(async () => {
     setIsLoading(true);
-    dispatch(getPosts(page));
+    await dispatch(getPosts(page));
     setIsLoading(false);
   }, [dispatch, page]);
 
