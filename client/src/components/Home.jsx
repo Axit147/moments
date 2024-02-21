@@ -19,9 +19,7 @@ const Home = () => {
   let connectionRef = useRef();
 
   useEffect(() => {
-    const s = io("https://moments-server-q687.onrender.com", {
-      transports: ["polling", "websocket"],
-    });
+    const s = io("https://moments-server-q687.onrender.com");
     setSocket(s);
     dispatch(getUsers());
     dispatch(fetchNotis(user?._id));
