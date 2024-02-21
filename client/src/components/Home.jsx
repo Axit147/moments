@@ -19,7 +19,7 @@ const Home = () => {
   let connectionRef = useRef();
 
   useEffect(() => {
-    const s = io("https://moments-iota.vercel.app", {
+    const s = io("https://moments-server-q687.onrender.com", {
       transports: ["polling", "websocket"],
     });
     setSocket(s);
