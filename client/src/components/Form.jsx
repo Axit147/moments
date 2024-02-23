@@ -77,7 +77,10 @@ function Form({ currentId, setCurrentId }) {
   if (!user) {
     return (
       <div className="rounded-lg bg-white my-10 max-w-[300px] p-8 border-4 border-double text-center drop-shadow-md text-gray-500 font-semibold">
-        <h4>Please Log in to create a post or Like other's posts</h4>
+        <h4>
+          Please Log in to create a post, Like other's posts or to chat with
+          others
+        </h4>
       </div>
     );
   } else {
