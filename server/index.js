@@ -16,7 +16,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "https://moments-bcag.vercel.app",
+    origin: "https://moments-by-axit.vercel.app",
   },
 });
 
