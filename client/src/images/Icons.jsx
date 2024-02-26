@@ -224,7 +224,7 @@ export const Close = () => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-6 h-6"
+      className="w-6 h-6 text-red-600"
     >
       <path
         strokeLinecap="round"

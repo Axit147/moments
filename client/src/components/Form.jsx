@@ -177,18 +177,18 @@ function Form({ currentId, setCurrentId }) {
                   }}
                 />
 
-                <div className="group relative">
-                  <div className="group-hover:opacity-100 bg-black/10 backdrop-blur-sm opacity-0 h-full w-full z-20 absolute duration-200 flex items-center justify-center text-white text-xl">
-                    <button
-                      onClick={(e) => {
-                        editingModalHandler(e);
-                      }}
-                      className="p-2 border-2 rounded-full"
-                    >
-                      <Edit />
-                    </button>
-                  </div>
-                  {!(imgFile === "") && (
+                {!(imgFile === "") && (
+                  <div className="group relative">
+                    <div className="group-hover:opacity-100 bg-black/10 backdrop-blur-sm opacity-0 h-full w-full z-20 absolute duration-200 flex items-center justify-center text-white text-xl">
+                      <button
+                        onClick={(e) => {
+                          editingModalHandler(e);
+                        }}
+                        className="p-2 border-2 rounded-full"
+                      >
+                        <Edit />
+                      </button>
+                    </div>
                     <>
                       <img
                         src={imgFile}
@@ -196,8 +196,8 @@ function Form({ currentId, setCurrentId }) {
                         className="object-cover max-w-full"
                       />
                     </>
-                  )}
-                </div>
+                  </div>
+                )}
                 {!(imgFile === "") && (
                   <button
                     onClick={(e) => {
