@@ -75,7 +75,7 @@ const ResizableComponent = () => {
               width={"100%"}
               playing
               url={userStream}
-              muted
+              // muted
             />
           )}
         </div>
